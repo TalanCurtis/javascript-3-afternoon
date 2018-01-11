@@ -29,9 +29,21 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee{
+  constructor( first_name, last_name, email, age){
+    this.first_name = first_name,
+    this.last_name = last_name,
+    this.email = email,
+    this.age = age
+  }
+  makeWidget(){
+    //return this.first_name +" "+ this.last_name+" "+ "Widget"
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+}
 
-
+var emp1 = new Employee ('JoeJoe', 'Jonson', 'dddd@gmail.com', 66)
+console.log(emp1.makeWidget())
 
 ////////// PROBLEM 2 //////////
 
@@ -49,9 +61,22 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager extends Employee {
+  constructor(first_name, last_name, email, age, reports=[]){
+    super(first_name, last_name, email, age);
+    this.reports = reports;
+  }
+  hire(employee){this.reports.push(employee)};
+  fire(num){ this.reports.splice(num, 1)};
+}
 
-
+var man1 = new Manager('Jon', 'Last', 'aa@email.com', 24 )
+man1
+console.log(man1.makeWidget())
+man1.hire(emp1)
+console.log(man1.reports)
+man1.fire(0);
+console.log(man1.reports)
 
 ////////// PROBLEM 3 //////////
 
@@ -75,8 +100,59 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
-
+class ProgressiveManager extends Manager {
+  constructor(first_name, last_name, email, age, reports=[], title='Not a manager', bonus=0){
+    super(first_name, last_name, email, age, reports)
+    this.title = title
+    this.bonus = bonus
+  }
+  hire(employee){
+    this.reports.push(employee)
+    let reportsValue = this.reports.length
+    switch (true){
+      case reportsValue<=0:
+        this.title = 'Not a Manager'
+        console.log(this.reports.length)
+        break;
+      case (reportsValue<=3) :
+        this.title = 'Barely Manager'
+        console.log(this.reports.length)
+        break;
+      case (reportsValue<=10) :
+        this.title = 'Mostly Manager'
+        console.log(this.reports.length)
+        break;
+      case (reportsValue<=50) :
+        this.title = 'Manager'
+        console.log(this.reports.length)
+        break;
+      case (reportsValue<=100) :
+        this.title = 'Manager Plus'
+        console.log(this.reports.length)
+        break;
+      case (reportsValue>100) :
+        this.title = 'Bestest Manager'
+        console.log(this.reports.length)
+        break;
+      default:
+        this.title = 'Default'
+        console.log(this.reports.length)
+        break;
+      
+    }
+  };
+  fire(num){ 
+    this.bonus += 100;
+    this.reports.splice(num, 1)
+  };
+}
+var pm1 = new ProgressiveManager('mike','jonsoe', 'pmmany@gmail.com', 33, [], undefined)
+// console.log(pm1)
+// pm1
+// pm1.hire(1)
+// pm1
+// pm1.hire(1)
+// pm1
 
 
 ////////// PROBLEM 4 - Black Diamond //////////
@@ -102,6 +178,29 @@
         - It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine {
+  constructor(){
+    this.widgets_made_count= 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  }
+  makeWidgets(num){
+    this.widgets_made_count+=num
+    this.wear_and_tear_count += num/50
+  }
+  fixMachine(){this.needs_reboot = true}
+  reboot(){
+    this.needs_reboot = false
+    this.wear_and_tear_count-=10
+    return function (){}
+  }
+}
+
+var mac1 = new Machine;
+mac1
+mac1.makeWidgets(100)
+mac1
+mac1.makeWidgets(50)
+mac1
 
 
