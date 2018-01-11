@@ -23,13 +23,14 @@
 //   console.log(values[key])
 // }
 
-/*
-  In this next example, we are accessing the property names themselves. Uncomment the code below, run it and look at what prints in the console.
-*/
+// /*
+//   In this next example, we are accessing the property names themselves. Uncomment the code below, run it and look at what prints in the console.
+// */
 
 // for(var key in values) {
 //   console.log(key)
 // }
+
 
 
 
@@ -40,10 +41,12 @@
 */
 
 function showValues( obj ) {
-  //Code Here
+  let together=""
+  for (let prop in obj){
+     together += obj[prop]
+  }
+  return together
 }
-
-
 
 ////////// PROBLEM 2 //////////
 
@@ -53,7 +56,14 @@ function showValues( obj ) {
   Return the updated object.
 */
 
-//Code Here
+function greaterThan10(obj){
+  for(let prop in obj){
+    if(obj[prop]>10){
+      obj[prop]=0
+    }
+  }
+  return obj
+}
 
 
 
@@ -65,7 +75,12 @@ function showValues( obj ) {
   Return the updated object.
 */
 
-//Code Here
+function double(obj){
+  for (let prop in obj){
+    obj[prop] *=2
+  }
+  return obj
+}
 
 
 
@@ -79,7 +94,17 @@ function showValues( obj ) {
   By the end of the for in loop, you should have a sentence, return that sentence.
 */
 
-//Code Here
+function secrets(obj){
+  let str = ''
+  for (let prop in obj){
+    if (prop.includes('sh')){
+      str += obj[prop]
+    }
+  }
+  return str
+}
+secrets({shame: "today", another: 1})
+console.log(secrets({shame: "today", another: 1}))
 
 
 
@@ -110,7 +135,10 @@ function showValues( obj ) {
   Delete the property password and return the object.
 */
 
-//Code Here
+function removePassword(obj){
+  delete obj.password
+  return obj
+}
 
 
 
@@ -129,7 +157,11 @@ var deleteTheBigNumbers = {
   Write a for in loop that deletes every property from the object deleteTheBigNumbers whose value is greater than 100.
 */
 
-//Code Here
+for (let num in deleteTheBigNumbers){
+  if (deleteTheBigNumbers[num]>100){
+    delete deleteTheBigNumbers[num]
+  }
+}
 
 
 
@@ -142,7 +174,15 @@ var deleteTheBigNumbers = {
   Return the updated object.
 */
 
-//Code Here
+function startsWithK(obj){
+  for (let prop in obj){
+    if(prop.charAt(0)==='k'){
+      delete obj[prop]
+    }
+  }
+  return obj
+}
+console.log(startsWithK({ kog: 3, cat: 4 }))
 
 
 
@@ -157,6 +197,13 @@ var deleteTheBigNumbers = {
   (hint: the method includes() may be of use...)
 */
 
-//Code Here
+function hiddenTreasure(obj){
+  for(let prop in obj){
+    if(!obj[prop].includes('treasure')){
+      delete obj[prop]
+    } 
+  }
+  return obj
+}
 
 
