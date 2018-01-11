@@ -21,7 +21,7 @@ var carDetails = {
   Use object destructuring to save the property values from the object carDetails into new variables. 
 */
 
-//Code Here
+var {color, make, model, year} = carDetails
 
 
 
@@ -34,7 +34,7 @@ var carDetails = {
 */
 
 function greeting( obj ) {
-  //Code Here
+  var {firstName, lastName, title}=obj
   
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
@@ -53,7 +53,10 @@ function greeting( obj ) {
   Sum up the values and return the total number.
 */
 
-//Code Here
+function totalPopulation(obj){
+  var {utah, california, texas, arizona}=obj
+  return utah+california+texas+arizona
+}
 
 
 
@@ -67,7 +70,10 @@ function greeting( obj ) {
   Push these new variables to an array and return the array. 
 */
 
-//Code Here
+function ingredients(obj){
+  var {carb, fat, protein}=obj
+  return [carb, fat, protein]
+}
 
 
 
@@ -84,8 +90,16 @@ function greeting( obj ) {
   The object properties will be named first, second, and third and their values will be numbers.
   Find the smallest number of the three and return that number.
 */
-
-//Code Here
+//{first, second, third}
+function largeNumbers({first, second, third}){
+  return Math.min(first,second, third)
+}
+// var obj = {
+//   first: 10,
+//   second: 20,
+//   third: 30
+// }
+// console.log(largeNumbers(obj))
 
 
 
@@ -97,6 +111,21 @@ function greeting( obj ) {
   Find the longest array and return that array.
 */
 
-//Code Here
+function numberGroups({a,b,c}){
+  let arr = [a,b,c]
+  let biggest=[];
+  for(let i=0;i<arr.length;i++){
+    if(arr[i].length>biggest.length){
+      biggest = arr[i]
+    }
+  }
+  return biggest
+  }
 
+var obj2 = {
+  a:[1,2,3],
+  b:[1],
+  c:[1,2,3,4,5]
+}
+console.log(numberGroups(obj2))
 
